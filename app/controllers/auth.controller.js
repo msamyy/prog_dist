@@ -11,9 +11,9 @@ function generateAccessToken(user) {
 
 const authAdmin = async (req, res) => {
   // Validate request
-  console.log("#################################");
-  console.log(req.body.email, req.body.mdp);
-  console.log("#################################");
+  // console.log("#################################");
+  // console.log(req.body.email, req.body.mdp);
+  // console.log("#################################");
   if (!req.body.email || !req.body.mdp) {
     res.status(400).send({
       message: "tel and pwd can not be empty!"
