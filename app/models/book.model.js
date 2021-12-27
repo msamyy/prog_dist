@@ -11,33 +11,34 @@ module.exports = function (sequelize, Sequelize) {
         authors: {
             type: Sequelize.STRING
         },
+        long_description: {
+            type: Sequelize.STRING
+        },
+        short_description: {
+            type: Sequelize.STRING
+        },
         average_rating: {
             type: Sequelize.REAL
         },
         isbn: {
             type: Sequelize.STRING(30)
         },
-        isbn13: {
-            type: Sequelize.STRING(30)
-        },
-        language_code: {
-            type: Sequelize.STRING(5)
-        },
         num_pages: {
             type: Sequelize.INTEGER
-        }, 
-        rating_count: {
-            type: Sequelize.BIGINT
-        },
-        text_reviews_count: {
-            type: Sequelize.BIGINT
         },
         publication_date: {
             type: Sequelize.DATE
         },
-        publisher: {
+        url: {
             type: Sequelize.STRING
         },
+        quantity: {
+            type: Sequelize.INTEGER
+        },
+        categories: {
+            type: Sequelize.TEXT
+        },
+
         // ajouter un champs pour les exemplaires dispos
     }, {
         freezeTableName: true,

@@ -2,16 +2,15 @@ CREATE TABLE "book" (
   "bookID" SERIAL primary key,
   "title" TEXT,
   "authors" TEXT,
+  "long_description" TEXT,
+  "short_description" TEXT,
   "average_rating" real,
   "isbn" varchar(30),
-  "isbn13" varchar(30),
-  "language_code" varchar(5),
   "num_pages" INTEGER,
-  "rating_count" bigint,
-  "text_reviews_count" bigint,
   "publication_date" DATE,
-  "publisher" TEXT
---   ajouter un champs pour les exemplaires dispos
+  "url" TEXT,
+  "quantity" INTEGER,
+  "categories" TEXT
 );
 
 CREATE TABLE "admin" (
