@@ -1,0 +1,16 @@
+{
+    "services": {
+        "medAppRESTAPI": {
+            "apiName": "medAppRESTAPI",
+            "host": "http://localhost",
+            "port": 4000,
+            "url": "http://localhost:4000"
+        },
+        "adminAPI": {
+            "apiName": "adminAPI",
+            "host": "http://localhost",
+            "port": 9000,
+            "url": "http://localhost:9000"
+        }
+    }
+}
