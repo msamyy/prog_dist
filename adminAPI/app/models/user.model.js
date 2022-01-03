@@ -27,7 +27,7 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
         tel: {
-            type: Sequelize.STRING(12)
+            type: Sequelize.STRING(15)
         },
     }, {
         freezeTableName: true,

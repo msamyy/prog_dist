@@ -28,7 +28,7 @@ CREATE TABLE "user" (
   "hashedpwd" TEXT,
   "date_adhesion" DATE,
   "avatar_url" TEXT,
-  "tel" varchar(12)
+  "tel" varchar(15)
 );
 
 CREATE TABLE "emprunt" (
@@ -40,4 +40,8 @@ CREATE TABLE "emprunt" (
 
 
 
+/*
+\copy public."user"("name",email,adresse,tel,date_de_naissance,date_adhesion,avatar_url,hashedpwd) FROM 'C:\Users\MSS\Desktop\M1\prog_dist\projet\prog_dist\adminAPI\usersffff.txt' WITH DELIMITER ',' CSV HEADER;
 
+
+\copy book(title,isbn,num_pages,publication_date,url,short_description,long_description,authors,categories,average_rating,quantity) FROM 'C:\Users\MSS\Desktop\M1\prog_dist\projet\prog_dist\adminAPI\fixedjson.csv.txt' WITH DELIMITER '|' CSV HEADER;
