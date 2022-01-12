@@ -1,0 +1,64 @@
+<div class="form-row">
+  <div class="form-item">
+    <label>Title</label>
+    <input type="text" name="title" value="<%= book.title %>">
+  </div>
+  <div class="form-item">
+    <label>Authors</label>
+    <textarea name="authors"><%= book.authors %></textarea>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-item">
+    <label>Publication date</label>
+    <input type="date" name="publication_date"
+          value="<%= book.publication_date == null ? '' : book.publication_date %>">
+  </div>
+  <div class="form-item">
+    <label>Page count</label>
+    <input type="number" name="num_pages" min="0" value="<%= book.num_pages %>">
+  </div>
+  
+</div>
+
+<div class="form-row">
+  <div class="form-item">
+    <label>Quantity</label>
+    <input type="number" name="quantity" min="0" value="<%= book.quantity %>">
+  </div>
+  <div class="form-item">
+    <label>Average rating</label>
+    <input type="number" name="average_rating" step="0.1" min="0" value="<%= book.average_rating %>">
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-item">
+    <label>ISBN</label>
+    <input type="text" name="isbn" value="<%= book.isbn %>">
+  </div>
+  <div class="form-item">
+    <label>Categories</label>
+    <textarea name="categories"><%= book.categories %></textarea>
+  </div>
+</div>
+
+
+<div class="form-row">
+  <div class="form-item form-item-no-grow">
+    <label>Url</label>
+    <textarea name="url"><%= book.url %></textarea>
+  </div>
+  <div class="form-item">
+    <label>Short description</label>
+    <textarea name="short_description" rows="6"><%= book.short_description %></textarea>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-item">
+    <label>Long description</label>
+    <textarea name="long_description" rows="12"><%= book.long_description %></textarea>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+
+
+<h2 class="page-header"><%= author.name %></h2>
+<div class="book-details">
+  <div style="margin-right:50px;">
+    <img class="book-cover" src="<%= author.avatar_url %>">
+    <div class="book-details-btn-grid">
+      <a class="btn btn-primary" href="/authors/<%= author.userID %>/edit">Edit</a>
+      <%- include('../partials/deleteForm', { url: `/authors/${author.userID}` }) %>
+    </div>
+  </div>
+  <div class="book-details-grid">
+    <div class="book-details-label">Address:</div>
+    <div><%= author.adresse %></div>
+    <div class="book-details-label">Birth date:</div>
+    <div><%= author.date_de_naissance %></div>
+    <div class="book-details-label">Email:</div>
+    <div><%= author.email %></div>
+    <div class="book-details-label">Adhesion date:</div>
+    <div><%= author.date_adhesion %></div>
+    <div class="book-details-label">Phone number:</div>
+    <div><%= author.tel %></div>
+  </div>
+</div>

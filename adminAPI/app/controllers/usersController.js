@@ -64,10 +64,7 @@ const search = async (req, res) => {
                 // ]
             }
         });
-        return res.json({
-            status: "ok",
-            user: data
-        })
+        return res.json(data)
     } catch (error) {
         res.status(500).json({
             status: "error",
@@ -137,6 +134,7 @@ const addUser = async (req, res) => {
                 res.status(200).send({
                     success: true,
                     msg: 'Le user est enregistré.',
+                    user: data,
                 });
             })
             .catch(err => {

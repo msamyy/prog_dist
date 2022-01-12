@@ -11,6 +11,6 @@ app.use('/medAppRESTAPI', proxy('http://localhost:4000'))
 app.use('/adminAPI', proxy('http://localhost:7000'))
 
 
-app.listen(3000, () => {
-    console.log('Gateway is Listening to Port 3000')
+app.listen(6000, () => {
+    console.log('Gateway is Listening to Port 6000')
 })

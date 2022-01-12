@@ -16,7 +16,7 @@ const authAdmin = async (req, res) => {
   // console.log("#################################");
   if (!req.body.email || !req.body.mdp) {
     res.status(400).send({
-      message: "tel and pwd can not be empty!"
+      message: "email and pwd can not be empty!"
     });
     return;
   }
@@ -38,12 +38,12 @@ const authAdmin = async (req, res) => {
         console.log(adminO.email, adminO.hashedpwd);
         console.log(accessToken);
         console.log("#################################");
+        res.cookie("accessToken", accessToken, { httpOnly: true });
         res.status(200).send({
           accessToken,
           success: true,
-          id: adminO.idAdmin,
-          msg: 'Medecin est authentifié.',
-          nomAdmin: adminO.nomAdmin + ' ' + adminO.prenomAdmin
+          id: adminO.adminID,
+          msg: 'Admin est authentifié.'
         });
       } else {
         res.status(401).send({
@@ -61,7 +61,7 @@ const authAdmin = async (req, res) => {
     }
   } catch (err) {
     res.status(500).send({
-      message: err.message || "Some error occured while searching Medecin "
+      message: err.message || "Some error occured while searching Admin "
     });
   }
 };

@@ -77,10 +77,7 @@ const search = async (req, res) => {
                 }
             }
         });
-        return res.json({
-            status: "ok",
-            books: data
-        })
+        return res.json(data)
     } catch (error) {
         res.status(500).json({
             status: "error",
@@ -101,8 +98,23 @@ const addBook = async (req, res) => {
     }
     try {
         let book = req.body;
+        const removeEmptyOrNull = (obj) => {
+            Object.keys(obj).forEach(k =>
+              (obj[k] && typeof obj[k] === 'object') && removeEmptyOrNull(obj[k]) ||
+              (!obj[k] && obj[k] !== undefined) && delete obj[k]
+            );
+            return obj;
+          };
+          book=removeEmptyOrNull(book);
+        // Object.keys(book).forEach(function(key, value){
+        //     if (value === "" || value === null){
+        //         delete book[key];
+        //     }
+        // });
+        console.log(book);
         Book.create(book)
             .then(data => {
+                console.log(book);
                 res.status(200).send({
                     success: true,
                     msg: 'Le livre est enregistré.',
@@ -110,6 +122,7 @@ const addBook = async (req, res) => {
                 });
             })
             .catch(err => {
+                console.log(err);
                 res.status(500).send({
                     message:
                         err.message || "Some error occurred while creating the book."

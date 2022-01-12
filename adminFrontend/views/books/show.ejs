@@ -1,0 +1,30 @@
+  <h2 class="page-header"><%= book.title %></h2>
+  <div class="book-details">
+    <div style="margin-right:50px;">
+      <img class="book-cover" src="<%= book.url %>">
+      <div class="book-details-btn-grid">
+        <a class="btn btn-primary" href="/books/<%= book.bookID %>/edit">Edit</a>
+        <%- include('../partials/deleteForm', { url: `/books/${book.bookID}` }) %>
+      </div>
+    </div>
+    <div class="book-details-grid">
+      <div class="book-details-label">Author:</div>
+      <div><%= book.authors %></div>
+      <div class="book-details-label">Publish Date:</div>
+      <div><%= book.publication_date %></div>
+      <div class="book-details-label">ISBN:</div>
+      <div><%= book.isbn %></div>
+      <div class="book-details-label">Average rating:</div>
+      <div><%= book.average_rating %> &bigstar;</div>
+      <div class="book-details-label">Quantity:</div>
+      <div><%= book.quantity %></div>
+      <div class="book-details-label">Page Count:</div>
+      <div><%= book.num_pages %></div>
+      <div class="book-details-label">Categories:</div>
+      <div><%= book.categories %></div>
+      <div class="book-details-label">Short description:</div>
+      <div><%= book.short_description %></div>
+      <div class="book-details-label">Long description:</div>
+      <div><%= book.long_description %></div>
+    </div>
+  </div>
