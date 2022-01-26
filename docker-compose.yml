@@ -1,0 +1,14 @@
+version: "3"
+services:
+  userAPI:
+    image: userapi
+    ports:
+      - "7500:7500"
+  adminAPI:
+    image: adminapi
+    ports:
+      - "7000:7000"
+  gateway:
+    image: gateway
+    ports:
+      - "6000:6000"
