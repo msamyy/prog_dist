@@ -15,7 +15,7 @@ function GetSortOrder(prop) {
 
 router.post('/', async (req, res) => {
     try {
-        const urll = 'http://localhost:6000/adminAPI/adminapi/auth/admin';
+        const urll = 'http://localhost:6000/adminapi/auth/admin';
         data = { email: req.body.email, mdp: req.body.password }
         console.log(data);
         const rest = await axios.post(urll, data);
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
             //     {
             //         'authorization': 'Bearer ' + token
             //     };
-            //     const urll = 'http://localhost:6000/adminAPI/adminapi/books/all';
+            //     const urll = 'http://localhost:6000/adminapi/books/all';
             //     let rslt = await axios.get(urll, { headers: headerss });
             //     books = rslt.data;
             //     books = books.sort(GetSortOrder("publication_date"));

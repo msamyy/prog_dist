@@ -27,9 +27,9 @@ router.get('/', async (req, res) => {
     };
     let urll
     if (req.query.title != null) {
-      urll = 'http://localhost:6000/adminAPI/adminapi/books/search_book?text=' + req.query.title;
+      urll = 'http://localhost:6000/adminapi/books/search_book?text=' + req.query.title;
     } else {
-      urll = 'http://localhost:6000/adminAPI/adminapi/books/all';
+      urll = 'http://localhost:6000/adminapi/books/all';
     }
     let rslt = await axios.get(urll, { headers: headerss });
     books = rslt.data;
@@ -52,7 +52,7 @@ router.get('/recent', async (req, res) => {
     {
       'authorization': 'Bearer ' + token
     };
-    const urll = 'http://localhost:6000/adminAPI/adminapi/books/all';
+    const urll = 'http://localhost:6000/adminapi/books/all';
     let rslt = await axios.get(urll, { headers: headerss });
     books = rslt.data;
     books = books.sort(GetSortOrder("publication_date"));
@@ -73,7 +73,7 @@ router.get('/new', async (req, res) => {
 router.post('/', async (req, res) => {
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
     // console.log(token);
-    const urll = 'http://localhost:6000/adminAPI/adminapi/books/add';
+    const urll = 'http://localhost:6000/adminapi/books/add';
     const headerss =
     {
       'authorization': 'Bearer ' + token
@@ -96,7 +96,7 @@ router.get('/:id', async (req, res) => {
     //                        .exec()
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
     // console.log(token);
-    const urll = 'http://localhost:6000/adminAPI/adminapi/books/' + req.params.id;
+    const urll = 'http://localhost:6000/adminapi/books/' + req.params.id;
     const headerss =
     {
       'authorization': 'Bearer ' + token
@@ -114,7 +114,7 @@ router.get('/:id/edit', async (req, res) => {
   try {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
     // console.log(token);
-    const urll = 'http://localhost:6000/adminAPI/adminapi/books/' + req.params.id;
+    const urll = 'http://localhost:6000/adminapi/books/' + req.params.id;
     const headerss =
     {
       'authorization': 'Bearer ' + token
@@ -133,7 +133,7 @@ router.put('/:id', async (req, res) => {
   try {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
     // console.log(token);
-    const urll = 'http://localhost:6000/adminAPI/adminapi/books/' + req.params.id;
+    const urll = 'http://localhost:6000/adminapi/books/' + req.params.id;
     const headerss =
     {
       'authorization': 'Bearer ' + token
@@ -160,7 +160,7 @@ router.delete('/:id', async (req, res) => {
   let book
   try {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
-    const urll = 'http://localhost:6000/adminAPI/adminapi/books/' + req.params.id;
+    const urll = 'http://localhost:6000/adminapi/books/' + req.params.id;
     const headerss =
     {
       'authorization': 'Bearer ' + token

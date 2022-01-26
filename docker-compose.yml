@@ -1,14 +1,22 @@
 version: "3"
 services:
   userAPI:
+    build: ./userAPI
     image: userapi
     ports:
       - "7500:7500"
+    container_name: userAPI
   adminAPI:
+    build: ./adminAPI
     image: adminapi
     ports:
       - "7000:7000"
+    container_name: adminAPI
   gateway:
+    build: ./gateway
     image: gateway
     ports:
       - "6000:6000"
+    container_name: gateway
+    environment:
+    - AM_DOCKER=true
