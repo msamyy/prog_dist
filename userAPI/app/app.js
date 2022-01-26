@@ -7,7 +7,6 @@ import db from './models/index.js'
 import authRouter from './routes/auth.route'
 import booksRouter from './routes/books.route'
 import usersRouter from './routes/users.route'
-import adminRouter from './routes/admin.route'
 
 
 dotenv.config()
@@ -38,18 +37,16 @@ app.use(bodyParser.json());
 
 db.sequelize.sync();
 
-app.use('/auth', authRouter);
+app.use('/signin', authRouter);
 
-app.use('/users', authenticateToken, usersRouter);
+app.use('/profile', /*authenticateToken,*/ usersRouter);
 
 app.use('/books', authenticateToken, booksRouter);
-
-app.use('/admin', /*authenticateToken,*/ adminRouter);
 
 
 //Home
 app.use((req, res) => {
-    res.send("<h1>i dont know</h1>");
+    res.send("<h1>User REST API is UP</h1>");
 
 });
 
