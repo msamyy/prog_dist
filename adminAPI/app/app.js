@@ -1,13 +1,14 @@
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import db from './models/index.js'
+import adminRouter from './routes/admin.route'
 import authRouter from './routes/auth.route'
 import booksRouter from './routes/books.route'
 import usersRouter from './routes/users.route'
-import adminRouter from './routes/admin.route'
 
 
 dotenv.config()
@@ -35,6 +36,7 @@ app.use(cors());
 // Parse data in JSON
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 db.sequelize.sync();
 

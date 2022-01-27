@@ -16,7 +16,7 @@ services:
     build: ./gateway
     image: gateway
     ports:
-      - "6000:6000"
+      - "9000:9000"
     container_name: gateway
     environment:
     - AM_DOCKER=true
