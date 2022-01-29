@@ -38,7 +38,7 @@ const authAdmin = async (req, res) => {
         console.log(adminO.email, adminO.hashedpwd);
         console.log(accessToken);
         console.log("#################################");
-        res.cookie("accessToken", accessToken, { httpOnly: true });
+        res.cookie("accessToken", accessToken);
         res.status(200).send({
           accessToken,
           success: true,

@@ -8,16 +8,15 @@ const Book = require('../models/book')
 router.get('/', async (req, res) => {
   let users
   try {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
     const headerss =
     {
-      'authorization': 'Bearer ' + token
+      'authorization': 'Bearer ' + req.cookies.accessToken
     };
     let urll
     if (req.query.name != null) {
-      urll = 'http://localhost:6000/adminAPI/adminapi/users/search_user?text=' + req.query.name;
+      urll = 'http://localhost:9000/adminapi/users/search_user?text=' + req.query.name;
     } else {
-      urll = 'http://localhost:6000/adminAPI/adminapi/users/all';
+      urll = 'http://localhost:9000/adminapi/users/all';
     }
     let rslt = await axios.get(urll, { headers: headerss });
     users = rslt.data;
@@ -37,12 +36,10 @@ router.get('/new', (req, res) => {
 
 // Create Author Route
 router.post('/', async (req, res) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
-  // console.log(token);
-  const urll = 'http://localhost:6000/adminAPI/adminapi/users/add';
+  const urll = 'http://localhost:9000/adminapi/users/add';
   const headerss =
   {
-    'authorization': 'Bearer ' + token
+    'authorization': 'Bearer ' + req.cookies.accessToken
   };
   const rslt = await axios.post(urll, req.body, { headers: headerss });
   console.log(rslt);
@@ -60,12 +57,10 @@ router.post('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
-    // console.log(token);
-    const urll = 'http://localhost:6000/adminAPI/adminapi/users/' + req.params.id;
+    const urll = 'http://localhost:9000/adminapi/users/' + req.params.id;
     const headerss =
     {
-      'authorization': 'Bearer ' + token
+      'authorization': 'Bearer ' + req.cookies.accessToken
     };
     const rslt = await axios.get(urll, { headers: headerss });
     const user = rslt.data[0]
@@ -77,12 +72,10 @@ router.get('/:id', async (req, res) => {
 
 router.get('/:id/edit', async (req, res) => {
   try {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
-    // console.log(token);
-    const urll = 'http://localhost:6000/adminAPI/adminapi/users/' + req.params.id;
+    const urll = 'http://localhost:9000/adminapi/users/' + req.params.id;
     const headerss =
     {
-      'authorization': 'Bearer ' + token
+      'authorization': 'Bearer ' + req.cookies.accessToken
     };
     const rslt = await axios.get(urll, { headers: headerss });
     const user = rslt.data[0]
@@ -95,12 +88,10 @@ router.get('/:id/edit', async (req, res) => {
 router.put('/:id', async (req, res) => {
   let user
   try {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
-    // console.log(token);
-    const urll = 'http://localhost:6000/adminAPI/adminapi/users/' + req.params.id;
+    const urll = 'http://localhost:9000/adminapi/users/' + req.params.id;
     const headerss =
     {
-      'authorization': 'Bearer ' + token
+      'authorization': 'Bearer ' + req.cookies.accessToken
     };
     const rest = await axios.put(urll, req.body, { headers: headerss });
     user = rest.data.user;
@@ -129,11 +120,10 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   let user
   try {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklEIjoyLCJlbWFpbCI6ImNhY2EiLCJoYXNoZWRwd2QiOiIkMmIkMTAkRnNWN0VzdlB0TUpINjhXODBlQUtSLjRCdDdEZkU0ZnJCVU1SaGpCWWRhWjBKeFQ3L0VPNnkiLCJpYXQiOjE2NDA1Mjc0NDUsImV4cCI6MTY3MjA2MzQ0NX0.DkrijX-tOaIi1zy1DMEJUZIC0NJbMhdfO3dokSQhB9I';
-    const urll = 'http://localhost:6000/adminAPI/adminapi/users/' + req.params.id;
+    const urll = 'http://localhost:9000/adminapi/users/' + req.params.id;
     const headerss =
     {
-      'authorization': 'Bearer ' + token
+      'authorization': 'Bearer ' + req.cookies.accessToken
     };
     console.log("deleting", req.params.id);
     const rest = await axios.delete(urll, { headers: headerss });
