@@ -5,7 +5,7 @@ var authRouter = require("express").Router();
 
 
 
-authRouter.post("/", authCtrl.loginUser);
+authRouter.post("/login", authCtrl.loginUser);
 
 
 export default authRouter;

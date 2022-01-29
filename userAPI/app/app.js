@@ -37,9 +37,9 @@ app.use(bodyParser.json());
 
 db.sequelize.sync();
 
-app.use('/signin', authRouter);
+app.use('/login', authRouter);
 
-app.use('/profile', /*authenticateToken,*/ usersRouter);
+app.use('/users', authenticateToken, usersRouter);
 
 app.use('/books', authenticateToken, booksRouter);
 

@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+body{
+    overflow-x: hidden;
+}
+.book-app > .row {
+	overflow-x: auto;
+	flex-wrap: nowrap;
+    width : 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.row > div.image-container {
+    width: 200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.image-container {
+	position: relative;
+	transition: transform 0.2s;
+    width: 200px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.image-container:hover {
+	cursor: pointer;
+	transform: scale(1.1);
 }
 
-.App-link {
-  color: #61dafb;
+.image-container:hover .overlay {
+	opacity: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.overlay {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.8);
+	transition: 0.5s ease;
+	opacity: 0;
+	bottom: 0;
+    width: 90%;
+	font-size: 8px;
+	padding: 20px;
+	text-align: center;
+    color: white;
+}
+
+
+/*
+    Partie : Détails d'un livre
+*/
+
+.container-details{
+    display: block;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top : 3%;
+}
+
+.up-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5%;
+    word-wrap: break-word;
+}
+
+.up-info p{
+    word-wrap: break-word;
+}
+
+.up-info img{
+    margin-left: 5%;
+}
+
+.meta-Info{
+    margin-top: 8%;
+}
+
+.infos-secondaires{
+    margin-top:10%;
+}
+
+.infos-secondaires p{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin:0;
+}
+
+.up-summary{
+    margin-top: 3%;
+    margin-left: 1%;
 }

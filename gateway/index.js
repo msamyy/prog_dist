@@ -12,6 +12,6 @@ app.use('/adminapi', proxy('http://localhost:7000'))
 app.use('/userapi', proxy('http://localhost:7500'))
 
 
-app.listen(6000, () => {
-    console.log('Gateway is Listening to Port 6000')
+app.listen(7800, () => {
+    console.log('Gateway is Listening to Port 7800')
 })

@@ -30,7 +30,10 @@ const findBookById = async (req, res) => {
                 status: 404,
             });
         } else {
-            res.send(data);
+            res.status(200).json({
+                message: "Book returned successfully",
+                book: data
+            })
         }
     }
     catch (err) {
