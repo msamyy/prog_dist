@@ -1,6 +1,4 @@
-import { useNavigate } from "react-router-dom"
 const BookList = (props) => { 
-    const navigate = useNavigate('/book')
     return (
         <>
             {props.books.map((book, index) => (

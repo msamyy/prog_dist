@@ -3,7 +3,6 @@ import BookDetails from "../Book/BookDetails"
 import Navigation from "../Navigation/Navigation"
 import {api} from "../scripts/Network" ;
 import { useState, useEffect } from 'react' ;
-import { BrowserRouter as Router, Route, useNavigate } from "react-router-dom"
 
 const Browse = () => {
     const [books, setBooks] = useState([]);
@@ -19,7 +18,6 @@ const Browse = () => {
             `/books/all`
         ).then( res => {
             if(res){
-                console.log(res)
                 setBooks(res)
             }
         }).catch( err =>  {
@@ -47,7 +45,9 @@ const Browse = () => {
                         </div>
                     </div>  
                 :
+                <>
                     <BookDetails book={book}/>
+                </>
                 }    
         </>
         

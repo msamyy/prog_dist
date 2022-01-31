@@ -19,14 +19,14 @@ module.exports = function (sequelize, Sequelize) {
         updatedAt: false
     });
 
-    Emprunt.associate = function (modals) {
-        Emprunt.hasOne(modals.User, {
+   /* Emprunt.associate = function (modals) {
+        Emprunt.hasMany(modals.User, {
             foreignKey: 'userID',
         });
-        Emprunt.hasOne(modals.Book, {
+        Emprunt.hasMany(modals.Book, {
             foreignKey: 'bookID',
         });
-    };
+    };*/
 
     return Emprunt;
 };

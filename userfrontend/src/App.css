@@ -1,6 +1,11 @@
 body{
     overflow-x: hidden;
 }
+
+.navigation{
+    color:white;
+}
+
 .book-app > .row {
 	overflow-x: auto;
 	flex-wrap: nowrap;

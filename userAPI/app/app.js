@@ -39,7 +39,7 @@ db.sequelize.sync();
 
 app.use('/login', authRouter);
 
-app.use('/users', authenticateToken, usersRouter);
+app.use('/users',/* authenticateToken, */usersRouter);
 
 app.use('/books', authenticateToken, booksRouter);
 

@@ -1,10 +1,43 @@
 import {Button} from 'react-bootstrap';
+import {getCookie, api} from '../scripts/Network'
+
+
 const BookDetails = (props) => { 
+    const addDays = (date, days) => {
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+
     const handleReservation = () => {
         if(props.book.quantity == 0){
             window.alert("Ouups... Plus aucun exemplaire pour ce livre")
         }else{
-            /* To do for next time */
+            let today = Date.now();
+            let inTenDays=addDays(today, 10)
+            const dateFormatInTenDays = new Intl.DateTimeFormat('fr-FR', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(inTenDays)
+            try {
+                api.post(
+                    `/users/emprunts/add`,{
+                        userID : getCookie('loggedUsr', document.cookie) ,
+                        bookID : props.book.bookID,
+                        date_retour : dateFormatInTenDays
+                    }
+                ).then(
+                    res => {
+                        if (res.success) {
+                            console.log(res)
+                            window.alert('Votre emprunt a été validé pour une période de 10 jours')
+                        } else {
+                            window.alert("Votre période de prêt n'est pas encore terminée pour ce livre");
+                        }
+                    }
+                ).catch( err =>  {
+                    window.alert("Votre période de prêt n'est pas encore terminée pour ce livre");
+                })
+            } catch( err ){
+                window.alert("Une erreur s'est produite lors de votre réservation.");
+            }
         }
     }
     

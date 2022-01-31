@@ -15,7 +15,7 @@ function selectProxyHost(str, port) {
         return 'http://'+str+':'+port
     }
     else{
-        return 'http://localhost:7000'
+        return 'http://localhost:'+port
     }
 }
 

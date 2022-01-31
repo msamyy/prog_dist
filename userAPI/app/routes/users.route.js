@@ -13,6 +13,9 @@ usersRouter.get("/:id", usersController.findUserById);
 // Get user emprunts
 usersRouter.get("/emprunts/:userID", usersController.getUserEmprunts);
 
+// Get user emprunts
+usersRouter.post("/emprunts/add", usersController.addUserEmprunt);
+
 //Add user
 usersRouter.post("/add", usersController.addUser);
 

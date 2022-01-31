@@ -2,7 +2,15 @@ const db = require("../models");
 const User = db.user;
 const Emprunt = db.emprunt;
 const Op = db.Sequelize.Op;
+const Book = db.book;
 const bcrypt = require('bcrypt');
+import moment from 'moment'
+
+const isLater = (d1, d2) => {
+    console.log(moment(d1, "DD-MM-YYYY"))
+    console.log(moment(d2, "DD-MM-YYYY"))
+    return moment(d1, "DD-MM-YYYY") >  moment(d2, "DD-MM-YYYY")
+}
 
 const findAllUser = (req, res) => {
     User.findAll()
@@ -74,20 +82,61 @@ const search = async (req, res) => {
 }
 
 
+const addUserEmprunt = async (req, res) => {
+    const neededKeys = ['userID', 'bookID', 'date_retour'];
+    if (!(neededKeys.every(key => Object.keys(req.body).includes(key)))) {
+        res.status(400).send({
+            success: false,
+            message: "manque d'infos!"
+        });
+        return;
+    }
+    try {
+        const emp0 = await Emprunt.findOne({
+            where: {
+                userID : req.body.userID,
+                bookID: req.body.bookID
+            }
+        });
+        if(emp0 && isLater(req.body.date_retour, new Intl.DateTimeFormat('fr-FR', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(Date.now()))) ){
+            res.status(404).send({
+                success: false,
+                msg: 'La période de location de ce livre est en cours...'
+            })
+        } else {
+            let emprt = req.body
+            Emprunt.create(emprt)
+                .then(data => {
+                    res.status(200).send({
+                        success: true,
+                        msg: 'Emprunt enregistré.',
+                        user: data,
+                    });
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send({
+                        message:
+                        err.message || "Some error occurred while creating the user."
+                    });
+                });
+        } 
+    } catch (err) {
+        console.log(err)
+        res.status(500).send({
+            message: err.message || "Some error occured while searching user "
+        });
+    }
+}
+
 const getUserEmprunts = async (req, res) => {
     const id = req.params.userID;
     try {
         const data = await Emprunt.findAll({
             where: {
-                userID: +req.params.userID,
-            },
-            include: [{
-                model: Book,
-                // required: true,
-                where: {}
-            }]
+                userID: id
+            }
         });
-        console.log(JSON.stringify(data, null, 2));
         if (data.length === 0) {
             res.status(404).send({
                 error: 'not_found',
@@ -95,15 +144,16 @@ const getUserEmprunts = async (req, res) => {
                 status: 404,
             });
         } else {
-            res.send(data);
-        }
-    }
-    catch (err) {
+            res.send(data)
+        } 
+    } catch (err) {
         res.status(500).send({
             message: "Error retrieving user with id=" + id
         });
     };
 }
+
+
 
 
 const addUser = async (req, res) => {
@@ -207,6 +257,7 @@ export default {
     findUserById,
     search,
     getUserEmprunts,
+    addUserEmprunt,
     addUser,
     deleteUserById,
     UpdateUserById

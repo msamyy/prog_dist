@@ -8,7 +8,7 @@ const Login = () =>
     const [email, setemail] = useState('')
     const [mdp, setmdp] = useState('')
 
-    const onChangeHandler = (event/*:React.ChangeEvent<HTMLInputElement>*/) => {
+    const onChangeHandler = (event) => {
         event.preventDefault()
         switch (event.target.name) {
             case "email":
@@ -32,8 +32,11 @@ const Login = () =>
         ).then(
             res => {
                 if (res.success) {
+                    setCookie("loggedUsr", res.id)
                     setCookie("accessToken",res.accessToken)
                     window.location.href = "/browse"
+                } else {
+                    window.alert('Une erreur a eu lieu');
                 }
             }
         ).catch( err =>  {
